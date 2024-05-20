@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS users (
 
 INSERT INTO users (id, username, created_at)
     VALUES (123, 'aahil', NOW()),
-           (456, 'anjola', NOW());
+           (456, 'anjola', NOW()),
+           (789, 'justin', NOW()),
+           (111, 'paolo', NOW());
 
 DROP TABLE IF EXISTS follows;
 CREATE TABLE IF NOT EXISTS follows (
@@ -43,7 +45,7 @@ CREATE TABLE IF NOT EXISTS photos (
 );
 
 INSERT INTO photos (id, image_url, user_id, created_at)
-VALUES (1, 'aa', 123, NOW()), (2, 'bb', 456, NOW());
+VALUES (1, 'aa', 123, NOW()), (2, 'bb', 456, NOW()), (3, 'cc', 789, NOW());
 
 DROP TABLE IF EXISTS likes;
 CREATE TABLE IF NOT EXISTS likes (
@@ -75,7 +77,10 @@ CREATE TABLE IF NOT EXISTS comments(
         ON DELETE RESTRICT
 );
 INSERT INTO comments(id, comment_text, user_id, photo_id, created_at)
-VALUES (11, 'yippee', 123, 1, NOW()), (22, 'wee', 456, 2, NOW());
+VALUES (11, 'college', 123, 1, NOW()),
+       (12, 'wow', 123, 1, NOW()),
+       (22, 'college', 456, 2, NOW()),
+       (33, 'wowee', 789, 3, NOW());
 
 
 DROP TABLE IF EXISTS tags;
@@ -84,9 +89,9 @@ CREATE TABLE IF NOT EXISTS tags (
     tag_name VARCHAR(255) UNIQUE,
     created_at DATETIME
 );
-INSERT INTO tags(id, tag_name, created_at)
-VALUES (11, '#fontenot', NOW()), (22, '#paolo', NOW());
 
+INSERT INTO tags(id, tag_name, created_at)
+VALUES (11, '#NEU', NOW()), (22, '#BU', NOW()), (33, '#BU #NEU', NOW());
 
 DROP TABLE IF EXISTS photo_tags;
 CREATE TABLE IF NOT EXISTS photo_tags (
@@ -102,4 +107,4 @@ CREATE TABLE IF NOT EXISTS photo_tags (
 );
 
 INSERT INTO photo_tags(photo_id, tag_id)
-VALUES (1, 11), (2, 22);
+VALUES (1, 11), (1, 22), (2, 33);
